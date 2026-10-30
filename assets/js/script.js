@@ -291,7 +291,7 @@ const BRANDS = [{
 	{
 		name: 'Onyx',
 		categories: [CAT.car],
-		logo: ''
+		logo: 'onyx.png'
 	},
 	{
 		name: 'Phely',
@@ -301,7 +301,7 @@ const BRANDS = [{
 	{
 		name: 'Roadwing',
 		categories: [CAT.car],
-		logo: ''
+		logo: 'roadwing.jpg'
 	},
 	{
 		name: 'Tracross',
