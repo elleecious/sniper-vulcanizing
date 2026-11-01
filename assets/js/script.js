@@ -166,6 +166,8 @@ $(function() {
 	});
 });
 
+
+
 /* ===== BRANDS (source: shop price list; names only, no prices) =====
    To show an official logo, drop the file in assets/images/brands/ and set logo: "filename.png".
    Without a logo file the brand name is shown in clean type. */
@@ -579,4 +581,44 @@ $(function() {
 		e.preventDefault();
 		f[(i + (e.shiftKey ? -1 : 1) + f.length) % f.length].focus();
 	});
+});
+
+/* ---- about carousel ---- */
+window.aboutImgFallback = img => {
+  const d = document.createElement('div');
+  d.className = 'ph-img';
+  d.innerHTML = '<i class="fa-solid fa-circle-dot"></i><span>Replace with ' + img.getAttribute('src').split('/').pop() + '</span>';
+  img.replaceWith(d);
+};
+
+$(function () {
+  const $c = $('.about-carousel');
+  if (!$c.length) return;
+  const tr = $c.find('.about-track')[0], $dots = $c.find('.about-dots');
+  const n = $c.find('.about-slide').length;
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let cur = 0, hold = false;
+
+  for (let i = 0; i < n; i++) $dots.append('<button type="button" class="about-dot" aria-label="Go to photo ' + (i + 1) + '"></button>');
+
+  const mark = () => {
+    cur = Math.round(tr.scrollLeft / tr.clientWidth);
+    $dots.children().each((i, d) => $(d).toggleClass('on', i === cur).attr('aria-current', i === cur));
+  };
+  const go = i => {
+    cur = (i + n) % n;
+    tr.scrollTo({ left: cur * tr.clientWidth, behavior: reduce ? 'auto' : 'smooth' });
+  };
+
+  tr.addEventListener('scroll', mark, { passive: true });
+  mark();
+  $c.find('.about-prev').on('click', () => go(cur - 1));
+  $c.find('.about-next').on('click', () => go(cur + 1));
+  $dots.on('click', '.about-dot', function () { go($(this).index()); });
+  $(window).on('resize', () => tr.scrollTo({ left: cur * tr.clientWidth }));
+
+  /* autoplay: pauses on hover, touch, keyboard focus and hidden tabs; off for reduced motion */
+  $c.on('mouseenter focusin touchstart', () => { hold = true; })
+    .on('mouseleave focusout touchend', () => { hold = false; });
+  if (!reduce && n > 1) setInterval(() => { if (!hold && !document.hidden) go(cur + 1); }, 5000);
 });

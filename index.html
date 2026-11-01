@@ -6,7 +6,7 @@
     <title>Sniper Tubeless Vulcanizing Shop | Tire Repair & Replacement in Kalibo, Aklan</title>
     <meta name="description" content="Tire repair, tire replacement, tire rotation and home or road service in Kalibo, Aklan. Sniper Tubeless Vulcanizing Shop has served motorists since October 2015.">
     <meta name="keywords" content="vulcanizing Kalibo, tire repair Kalibo Aklan, tubeless vulcanizing, tire replacement Kalibo, tire rotation Aklan">
-   <meta name="robots" content="index, follow">
+    <meta name="robots" content="index, follow">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Sniper Tubeless Vulcanizing Shop — ONE HOLE, ONE SHOT.">
     <meta property="og:description" content="Precision tire repair and reliable roadside assistance in Kalibo, Aklan.">
@@ -162,9 +162,29 @@
       </section>
       <section id="about" class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
-          <div class="reveal relative overflow-hidden group bg-ink aspect-[4/3]">
-            <img src="assets/images/about-tire-service.jpg" alt="Tire service at Sniper Tubeless Vulcanizing Shop" loading="lazy" width="800" height="600" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'ph-img',innerHTML:'<i class=&quot;fa-solid fa-circle-dot&quot;></i><span>Replace with about-tire-service.jpg</span>'}))">
-            <span class="absolute bottom-0 left-0 bg-race text-white font-display font-bold tracking-wide px-4 py-2">ESTABLISHED OCTOBER 2015</span>
+          <div class="about-carousel reveal relative overflow-hidden bg-ink aspect-[4/3]" role="region" aria-roledescription="carousel" aria-label="Photos of Sniper Tubeless Vulcanizing Shop">
+            <div class="about-track">
+              <figure class="about-slide">
+                <img src="assets/images/about-tire-service.jpg" alt="Tire service at Sniper Tubeless Vulcanizing Shop" loading="lazy" width="800" height="600" onerror="aboutImgFallback(this)">
+              </figure>
+              <figure class="about-slide">
+                <img src="assets/images/about-tire-service2.jpg" alt="Tire repair in progress at the shop" loading="lazy" width="800" height="600" onerror="aboutImgFallback(this)">
+              </figure>
+              <figure class="about-slide">
+                <img src="assets/images/about-tire-service4.jpg" alt="Tires and equipment at the shop" loading="lazy" width="800" height="600" onerror="aboutImgFallback(this)">
+              </figure>
+              <figure class="about-slide">
+                <img src="assets/images/about-tire-service3.jpg" alt="Tires and equipment at the shop" loading="lazy" width="800" height="600" onerror="aboutImgFallback(this)">
+              </figure>
+            </div>
+            <span class="absolute bottom-0 left-0 z-10 bg-race text-white font-display font-bold tracking-wide px-4 py-2">ESTABLISHED OCTOBER 2015</span>
+            <button type="button" class="about-nav about-prev" aria-label="Previous photo">
+              <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <button type="button" class="about-nav about-next" aria-label="Next photo">
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+            <div class="about-dots" role="group" aria-label="Choose photo"></div>
           </div>
           <div class="reveal">
             <h2 class="font-display text-4xl sm:text-5xl font-extrabold uppercase leading-none">Keeping Kalibo Moving Since 2015</h2>
@@ -499,9 +519,10 @@
     </div>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="assets/js/script.js"></script>
-
     <script>
-      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+      window.va = window.va || function() {
+        (window.vaq = window.vaq || []).push(arguments);
+      };
     </script>
     <script defer src="/_vercel/insights/script.js"></script>
   </body>
