@@ -281,7 +281,7 @@ const BRANDS = [{
 	{
 		name: 'Mirage',
 		categories: [CAT.car],
-		logo: ''
+		logo: 'mirage.png'
 	},
 	{
 		name: 'Compasal',
