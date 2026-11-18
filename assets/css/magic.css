@@ -1,0 +1,84 @@
+/* Magic UI-inspired layer. Load AFTER style.css. Content and logic are untouched. */
+@property --a{syntax:'<angle>';initial-value:0deg;inherits:false}
+
+/* Blur Fade (upgrades .reveal) */
+.reveal{opacity:0;transform:translateY(18px);filter:blur(10px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1),filter .8s ease;transition-delay:var(--d,0s)}
+.reveal.in{opacity:1;transform:none;filter:none}
+.reveal.done{transition:transform .25s,box-shadow .25s,opacity .25s,filter .25s;transition-delay:0s}
+.service-card.in:hover{transform:translateY(-6px)}
+.equip.in:hover,.tile.in:hover{transform:translateY(-5px)}
+@keyframes rise{from{opacity:0;transform:translateY(24px);filter:blur(10px)}to{opacity:1;transform:none;filter:none}}
+
+/* Text Reveal (words are wrapped by magic.js) */
+.w{display:inline-block;opacity:0;filter:blur(10px);transform:translateY(.35em);transition:opacity .7s ease,filter .7s ease,transform .7s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--i,0)*55ms)}
+.words-in .w{opacity:1;filter:none;transform:none}
+.hero h1.hero-in{animation:none;opacity:1;transform:none}
+.hero h1 .text-race .w{text-shadow:0 0 36px rgba(237,28,36,.55)}
+
+/* Scroll progress */
+#mg-progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:60;transform-origin:0 50%;transform:scaleX(var(--p,0));background:linear-gradient(90deg,#ED1C24,#ff7a7f);box-shadow:0 0 10px rgba(237,28,36,.7);pointer-events:none}
+
+/* Glass navbar + animated underline */
+#navbar{background:rgba(17,17,17,.7);-webkit-backdrop-filter:blur(14px) saturate(1.4);backdrop-filter:blur(14px) saturate(1.4);transition:background .3s,border-color .3s,box-shadow .3s}
+#navbar.scrolled{background:rgba(17,17,17,.9);border-bottom-color:rgba(237,28,36,.45)}
+@media(min-width:1024px){
+ #navbar .nav-link{position:relative}
+ #navbar .nav-link::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .25s}
+ #navbar .nav-link:hover::after,#navbar .nav-link.active::after{transform:scaleX(1)}
+}
+
+/* Hero: animated grid + glow */
+.hero::before{display:none}
+.mg-hero-grid{position:absolute;inset:0;overflow:hidden;-webkit-mask-image:radial-gradient(ellipse 75% 65% at 30% 45%,#000 25%,transparent 75%);mask-image:radial-gradient(ellipse 75% 65% at 30% 45%,#000 25%,transparent 75%)}
+.mg-hero-grid::before{content:"";position:absolute;left:0;right:0;top:-56px;bottom:0;background-image:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px);background-size:56px 56px;animation:gridmove 6s linear infinite}
+@keyframes gridmove{to{transform:translateY(56px)}}
+.mg-hero-glow{position:absolute;left:-12rem;top:8%;width:42rem;height:42rem;max-width:140vw;background:radial-gradient(circle,rgba(237,28,36,.3),transparent 65%);animation:glow 6s ease-in-out infinite}
+@keyframes glow{50%{opacity:.55}}
+.hero>.relative>p:first-child{display:inline-flex;align-items:center;gap:.6rem;border-radius:999px;background:rgba(237,28,36,.12);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.hero>.relative>p:first-child::before{content:"";width:.5rem;height:.5rem;border-radius:50%;background:var(--red);animation:ping 2s ease-out infinite}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgba(237,28,36,.7)}100%{box-shadow:0 0 0 .7rem rgba(237,28,36,0)}}
+
+/* Dark sections: subtle grid */
+.mg-dark{position:relative;isolation:isolate}
+.mg-dark::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:48px 48px;-webkit-mask-image:radial-gradient(ellipse at 50% 0,#000,transparent 70%);mask-image:radial-gradient(ellipse at 50% 0,#000,transparent 70%)}
+
+/* Shimmer buttons */
+.btn-red,.btn-outline,.btn-dark,.btn-outline-dark{border-radius:.6rem}
+.btn-red{background-image:linear-gradient(110deg,transparent 35%,rgba(255,255,255,.35) 50%,transparent 65%);background-size:250% 100%;background-repeat:no-repeat;background-position:150% 0;box-shadow:0 8px 24px -8px rgba(237,28,36,.65);animation:shimmer 3.2s ease-in-out infinite}
+@keyframes shimmer{0%,55%{background-position:150% 0}100%{background-position:-50% 0}}
+
+/* Border Beam + spotlight */
+.beam{position:relative;border-radius:14px}
+.beam::after{content:"";position:absolute;inset:0;border-radius:inherit;padding:2px;pointer-events:none;background:conic-gradient(from var(--a),transparent 0 75%,rgba(237,28,36,.9) 90%,#fff 100%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .3s;animation:beam 5s linear infinite paused}
+.beam:hover::after,.beam:focus-within::after,.equip.beam::after{opacity:1;animation-play-state:running}
+@keyframes beam{to{--a:360deg}}
+.spot::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(320px circle at var(--mx,50%) var(--my,50%),rgba(237,28,36,.14),transparent 65%)}
+.spot:hover::before{opacity:1}
+@media(hover:none){.spot::before{display:none}}
+
+/* Services: bento grid on large screens */
+@media(min-width:1024px){
+ #services .grid{grid-template-columns:repeat(3,1fr)}
+ #services .service-card:nth-child(1),#services .service-card:nth-child(4){grid-column:span 2}
+ #services .service-card:nth-child(1) h3,#services .service-card:nth-child(4) h3{font-size:2.1rem}
+ #services .service-card:nth-child(1) .icon,#services .service-card:nth-child(4) .icon{font-size:2.75rem}
+}
+
+/* Equipment cards */
+.equip{background:linear-gradient(160deg,#1c1c1c,#111);border:1px solid rgba(255,255,255,.08);padding:2rem 1.75rem}
+.equip i{width:3.5rem;height:3.5rem;display:grid;place-items:center;font-size:1.5rem;border-radius:1rem;background:rgba(237,28,36,.12);box-shadow:inset 0 0 0 1px rgba(237,28,36,.35);animation:float 4s ease-in-out infinite}
+.equip:nth-child(2) i{animation-delay:-1.3s}.equip:nth-child(3) i{animation-delay:-2.6s}
+@keyframes float{50%{transform:translateY(-6px)}}
+
+/* Brands, tiles, form, misc polish */
+.brand-card{border-radius:.75rem}
+.chip{border-radius:999px}
+.tile{border-radius:14px}
+.fld{border-radius:.6rem}
+.about-carousel,.ph-img{border-radius:1rem}
+#brand-modal>div{border-radius:1rem}
+
+@media(prefers-reduced-motion:reduce){
+ .reveal,.w{opacity:1!important;filter:none!important;transform:none!important}
+ .mg-hero-grid::before,.mg-hero-glow,.beam::after,.btn-red,.equip i,.hero>.relative>p:first-child::before{animation:none!important}
+}

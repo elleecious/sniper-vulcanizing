@@ -1,4 +1,5 @@
-/* ===== BUSINESS CONFIGURATION — edit these values only ===== */
+/* ===== BUSINESS CONFIGURATION — edit these values only =====
+   Leave a value as "" and its button/link is hidden automatically. */
 const CONFIG = {
 	phone: "+639198007351",
 	whatsapp: "639774774656",
@@ -9,7 +10,6 @@ const CONFIG = {
 };
 
 $(function() {
-
 	const $nav = $('#navbar'),
 		$menu = $('#mobile-menu'),
 		$toggle = $('#menu-toggle');
@@ -83,7 +83,7 @@ $(function() {
 		sections.forEach(s => {
 			if (s.offsetTop - 120 <= y) cur = s.id;
 		});
-		if (cur === 'how') cur = 'services';
+		if (cur === 'how' || cur === 'equipment') cur = 'services';
 		$('.nav-link').each(function() {
 			$(this).toggleClass('active', this.getAttribute('href') === '#' + cur);
 		});
@@ -166,8 +166,6 @@ $(function() {
 	});
 });
 
-
-
 /* ===== BRANDS (source: shop price list; names only, no prices) =====
    To show an official logo, drop the file in assets/images/brands/ and set logo: "filename.png".
    Without a logo file the brand name is shown in clean type. */
@@ -177,6 +175,7 @@ const CAT = {
 	tube: 'Interior Tubes',
 	other: 'Other Products and Accessories'
 };
+
 const BRANDS = [{
 		name: 'Maxxis',
 		categories: [CAT.moto],
@@ -535,7 +534,6 @@ $(function() {
 		msg = `Hello, Sniper Tubeless Vulcanizing Shop! I would like to inquire about products from ${b.name}. Thank you!`;
 		$('#bm-name').text(b.name);
 		$('#bm-cats').text(b.categories.join(', '));
-		$("#bm-about").text(b.about);
 		const $cta = $('#bm-cta');
 		if (waOn) $cta.attr({
 			href: 'https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(msg),
@@ -581,44 +579,4 @@ $(function() {
 		e.preventDefault();
 		f[(i + (e.shiftKey ? -1 : 1) + f.length) % f.length].focus();
 	});
-});
-
-/* ---- about carousel ---- */
-window.aboutImgFallback = img => {
-  const d = document.createElement('div');
-  d.className = 'ph-img';
-  d.innerHTML = '<i class="fa-solid fa-circle-dot"></i><span>Replace with ' + img.getAttribute('src').split('/').pop() + '</span>';
-  img.replaceWith(d);
-};
-
-$(function () {
-  const $c = $('.about-carousel');
-  if (!$c.length) return;
-  const tr = $c.find('.about-track')[0], $dots = $c.find('.about-dots');
-  const n = $c.find('.about-slide').length;
-  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let cur = 0, hold = false;
-
-  for (let i = 0; i < n; i++) $dots.append('<button type="button" class="about-dot" aria-label="Go to photo ' + (i + 1) + '"></button>');
-
-  const mark = () => {
-    cur = Math.round(tr.scrollLeft / tr.clientWidth);
-    $dots.children().each((i, d) => $(d).toggleClass('on', i === cur).attr('aria-current', i === cur));
-  };
-  const go = i => {
-    cur = (i + n) % n;
-    tr.scrollTo({ left: cur * tr.clientWidth, behavior: reduce ? 'auto' : 'smooth' });
-  };
-
-  tr.addEventListener('scroll', mark, { passive: true });
-  mark();
-  $c.find('.about-prev').on('click', () => go(cur - 1));
-  $c.find('.about-next').on('click', () => go(cur + 1));
-  $dots.on('click', '.about-dot', function () { go($(this).index()); });
-  $(window).on('resize', () => tr.scrollTo({ left: cur * tr.clientWidth }));
-
-  /* autoplay: pauses on hover, touch, keyboard focus and hidden tabs; off for reduced motion */
-  $c.on('mouseenter focusin touchstart', () => { hold = true; })
-    .on('mouseleave focusout touchend', () => { hold = false; });
-  if (!reduce && n > 1) setInterval(() => { if (!hold && !document.hidden) go(cur + 1); }, 5000);
 });

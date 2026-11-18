@@ -18,3 +18,11 @@ Open `index.html`, or serve the folder: `python3 -m http.server 8000`.
 
 ## Deploy
 Upload the whole folder to any static host (Netlify, Vercel, Cloudflare Pages, GitHub Pages, cPanel). Optional: compile Tailwind for production instead of using the CDN.
+
+## Brands section
+- Brand names come from the shop price list (names and categories only, no prices) and live in the `BRANDS` array in `assets/js/script.js`.
+- **Official logos:** save each file in `assets/images/brands/` (e.g. `maxxis.png`, transparent or white background) and set `logo: "maxxis.png"` on that brand. Brands without a logo show their name in clean type. Use only official logos, unaltered.
+- **INQUIRE ABOUT THIS BRAND** opens WhatsApp with a prefilled message when `whatsapp` is configured; otherwise it jumps to the inquiry form with the message filled in.
+
+## Magic UI-inspired layer
+`assets/css/magic.css` and `assets/js/magic.js` add the visual effects (blur fade, text reveal, animated grid, shimmer buttons, border beam, bento services, scroll progress). They only enhance existing markup; delete the two `<link>`/`<script>` tags in `index.html` to turn them all off.

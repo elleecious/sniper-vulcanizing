@@ -6,12 +6,11 @@
     <title>Sniper Tubeless Vulcanizing Shop | Tire Repair & Replacement in Kalibo, Aklan</title>
     <meta name="description" content="Tire repair, tire replacement, tire rotation and home or road service in Kalibo, Aklan. Sniper Tubeless Vulcanizing Shop has served motorists since October 2015.">
     <meta name="keywords" content="vulcanizing Kalibo, tire repair Kalibo Aklan, tubeless vulcanizing, tire replacement Kalibo, tire rotation Aklan">
-    <meta name="robots" content="index, follow">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Sniper Tubeless Vulcanizing Shop — ONE HOLE, ONE SHOT.">
     <meta property="og:description" content="Precision tire repair and reliable roadside assistance in Kalibo, Aklan.">
-    <meta property="og:image" content="assets/images/sniper-logo-transparent.png">
-    <link rel="icon" href="assets/images/sniper-logo-transparent.png">
+    <meta property="og:image" content="assets/images/sniper-logo.png">
+    <link rel="icon" href="assets/images/sniper-logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
@@ -37,13 +36,14 @@
       }
     </script>
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/magic.css">
   </head>
   <body class="font-body text-ink bg-white antialiased">
     <a href="#home" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] bg-race text-white px-4 py-2">Skip to content</a>
     <header id="navbar" class="fixed inset-x-0 top-0 z-50 bg-ink/95 backdrop-blur border-b border-white/10 transition-shadow">
       <nav class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between" aria-label="Main">
         <a href="#home" class="flex items-center gap-2 text-white font-display text-xl font-bold tracking-wide" aria-label="Sniper Tubeless Vulcanizing Shop home">
-          <img src="assets/images/sniper-logo-transparent.png" alt="Sniper Tubeless Vulcanizing Center logo" class="h-11 w-auto p-0.5" width="75" height="44">
+          <img src="assets/images/sniper-logo.png" alt="Sniper Tubeless Vulcanizing Center logo" class="h-11 w-auto bg-white p-0.5" width="75" height="44">
         </a>
         <ul class="hidden lg:flex items-center gap-8 text-sm font-semibold text-white">
           <li>
@@ -162,29 +162,12 @@
       </section>
       <section id="about" class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
-          <div class="about-carousel reveal relative overflow-hidden bg-ink aspect-[4/3]" role="region" aria-roledescription="carousel" aria-label="Photos of Sniper Tubeless Vulcanizing Shop">
-            <div class="about-track">
-              <figure class="about-slide">
-                <img src="assets/images/about-tire-service.jpg" alt="Tire service at Sniper Tubeless Vulcanizing Shop" loading="lazy" width="800" height="600" onerror="aboutImgFallback(this)">
-              </figure>
-              <figure class="about-slide">
-                <img src="assets/images/about-tire-service2.jpg" alt="Tire repair in progress at the shop" loading="lazy" width="800" height="600" onerror="aboutImgFallback(this)">
-              </figure>
-              <figure class="about-slide">
-                <img src="assets/images/about-tire-service4.jpg" alt="Tires and equipment at the shop" loading="lazy" width="800" height="600" onerror="aboutImgFallback(this)">
-              </figure>
-              <figure class="about-slide">
-                <img src="assets/images/about-tire-service3.jpg" alt="Tires and equipment at the shop" loading="lazy" width="800" height="600" onerror="aboutImgFallback(this)">
-              </figure>
-            </div>
-            <span class="absolute bottom-0 left-0 z-10 bg-race text-white font-display font-bold tracking-wide px-4 py-2">ESTABLISHED OCTOBER 2015</span>
-            <button type="button" class="about-nav about-prev" aria-label="Previous photo">
-              <i class="fa-solid fa-chevron-left"></i>
-            </button>
-            <button type="button" class="about-nav about-next" aria-label="Next photo">
-              <i class="fa-solid fa-chevron-right"></i>
-            </button>
-            <div class="about-dots" role="group" aria-label="Choose photo"></div>
+          <div class="reveal relative overflow-hidden group bg-ink aspect-[4/3]">
+            <img src="assets/images/about-tire-service.jpg" alt="Tire service at Sniper Tubeless Vulcanizing Shop" loading="lazy" width="800" height="600" 
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
+                onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'ph-img',
+                innerHTML:'<i class=&quot;fa-solid fa-circle-dot&quot;></i><span>Replace with about-tire-service.jpg</span>'}))">
+            <span class="absolute bottom-0 left-0 bg-race text-white font-display font-bold tracking-wide px-4 py-2">ESTABLISHED OCTOBER 2015</span>
           </div>
           <div class="reveal">
             <h2 class="font-display text-4xl sm:text-5xl font-extrabold uppercase leading-none">Keeping Kalibo Moving Since 2015</h2>
@@ -358,7 +341,6 @@
         </div>
       </section>
       <section id="contact" class="py-20 bg-mist">
-
         <div class="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-12">
           <div class="reveal">
             <h2 class="font-display text-4xl sm:text-5xl font-extrabold uppercase">Need Tire Assistance?</h2>
@@ -393,19 +375,11 @@
               <a data-action="directions" hidden target="_blank" rel="noopener" class="btn-outline-dark px-6 py-3 text-center">
                 <i class="fa-solid fa-diamond-turn-right mr-2"></i>GET DIRECTIONS </a>
             </div>
-
+            <p id="config-note" hidden class="mt-4 text-sm text-char/60">Call, message and directions buttons appear once the shop's details are added in assets/js/script.js.</p>
             <div class="mt-6 aspect-[4/3] sm:aspect-video w-full overflow-hidden bg-ink border-l-4 border-race shadow-sm">
-              <iframe
-                title="Map showing the location of Sniper Tubeless Vulcanizing Shop in Kalibo, Aklan"
-                src="https://www.google.com/maps?q=11.7037896,122.368208&z=17&output=embed"
-                class="w-full h-full border-0"
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-                allowfullscreen></iframe>
+              <iframe title="Map showing the location of Sniper Tubeless Vulcanizing Shop in Kalibo, Aklan" src="https://www.google.com/maps?q=11.7037896,122.368208&z=17&output=embed" class="w-full h-full border-0" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
             </div>
           </div>
-
-
           <form id="inquiry-form" class="reveal bg-white p-6 sm:p-8 shadow-sm" novalidate aria-labelledby="form-title">
             <h3 id="form-title" class="font-display text-3xl font-bold uppercase">Send an inquiry</h3>
             <div class="mt-5 space-y-4">
@@ -464,7 +438,7 @@
     <footer class="bg-ink text-white border-t-4 border-race">
       <div class="max-w-7xl mx-auto px-4 py-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
         <div>
-          <img src="assets/images/sniper-logo-transparent.png" alt="Sniper Tubeless Vulcanizing Shop logo" class="h-16 w-auto mb-3 p-1" width="109" height="64" loading="lazy">
+          <img src="assets/images/sniper-logo.png" alt="Sniper Tubeless Vulcanizing Shop logo" class="h-16 w-auto mb-3 bg-white p-1" width="109" height="64" loading="lazy">
           <p class="text-metal text-sm">Tire repair, replacement, rotation and home or road service for motorists in Kalibo, Aklan.</p>
         </div>
         <div>
@@ -508,7 +482,7 @@
           <h3 class="font-display text-xl font-bold mb-3">Find us</h3>
           <p class="text-sm text-metal">Kalibo, Aklan, Philippines <br>Established October 2015 </p>
           <a data-action="facebook" hidden target="_blank" rel="noopener" class="inline-block mt-3 text-sm hover:text-race">
-            <i class="fa-brands fa-facebook mr-2"></i>Sniper Tubeless Vulcanizing Shop </a>
+            <i class="fa-brands fa-facebook mr-2"></i>Facebook page </a>
         </div>
       </div>
       <div class="border-t border-white/10 py-4 text-center text-xs text-metal">© <span id="year">2026</span> Sniper Tubeless Vulcanizing Shop. All rights reserved. </div>
@@ -531,11 +505,6 @@
     </div>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="assets/js/script.js"></script>
-    <script>
-      window.va = window.va || function() {
-        (window.vaq = window.vaq || []).push(arguments);
-      };
-    </script>
-    <script defer src="/_vercel/insights/script.js"></script>
+    <script src="assets/js/magic.js"></script>
   </body>
 </html>
